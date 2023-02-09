@@ -53,7 +53,13 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrEmpty(txtPrice.Text) || string.IsNullOrWhiteSpace(txtPrice.Text))
+        {
+            lblResult.Text = "Product info invalid.";
+            return;
+        }
 
+        if(string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrWhiteSpace(txtDescription.Text)) txtDescription.Text = "No description";
 
         ProductModel model = new ProductModel();
         Product p = createProduct();
@@ -68,5 +74,6 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
         ddType.SelectedIndex = 0;
         ddImage.SelectedIndex = 0;
         Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        //Response.Redirect(Request.RawUrl);
     }
 }
