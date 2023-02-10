@@ -44,7 +44,7 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
     {
         Product product = new Product();
         product.Name = txtName.Text;
-        product.Price=int.Parse(txtPrice.Text);
+        product.Price = int.Parse(txtPrice.Text);
         product.TypeId = int.Parse(ddType.SelectedValue);
         product.Description = txtDescription.Text;
         product.Image = ddImage.SelectedValue;
@@ -53,17 +53,16 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrEmpty(txtPrice.Text) || string.IsNullOrWhiteSpace(txtPrice.Text))
+        if (IsValid)
         {
-            lblResult.Text = "Product info invalid.";
-            return;
+            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrWhiteSpace(txtDescription.Text)) txtDescription.Text = "No description";
+
+            ProductModel model = new ProductModel();
+            Product p = createProduct();
+            //lblResult.Text = model.InsertProduct(p);
+            lblResult.Text = p.Name;
         }
-
-        if(string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrWhiteSpace(txtDescription.Text)) txtDescription.Text = "No description";
-
-        ProductModel model = new ProductModel();
-        Product p = createProduct();
-        lblResult.Text = model.InsertProduct(p);
+        //else lblResult.Text = "Invalid data.";
     }
 
     protected void BtnReset_Click(object sender, EventArgs e)
@@ -73,7 +72,14 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
         txtPrice.Text = null;
         ddType.SelectedIndex = 0;
         ddImage.SelectedIndex = 0;
-        Page.Response.Redirect(Page.Request.Url.ToString(), true);
-        //Response.Redirect(Request.RawUrl);
+        Response.Redirect(Request.RawUrl);
+    }
+
+    protected void CustomValidatorpPrice_ServerValidate(object source, ServerValidateEventArgs args)
+    {
+        int n;
+        bool isNumber = int.TryParse(args.Value, out n);
+        if (isNumber && n > 0) args.IsValid = true;
+        else args.IsValid = false;
     }
 }

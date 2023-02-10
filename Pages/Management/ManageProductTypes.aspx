@@ -8,6 +8,7 @@
         Name:</p>
     <p>
         <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorName" runat="server" ControlToValidate="txtName" ErrorMessage="*Enter a product type" ForeColor="Red"></asp:RequiredFieldValidator>
     </p>
     <p>
         <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
