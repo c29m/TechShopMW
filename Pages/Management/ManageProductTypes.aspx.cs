@@ -18,8 +18,8 @@ public partial class Pages_ManageProductTypes : System.Web.UI.Page
         ProductTypeTypeModel model = new ProductTypeTypeModel();
         ProductType pt = createProductType();
         pt.Name = txtName.Text;
-        //lblResult.Text = model.InsertProductType(pt);
-        lblResult.Text = txtName.Text;
+        lblResult.Text = model.InsertProductType(pt);
+        //lblResult.Text = txtName.Text;
         //Sidekick.Alert(txtName.Text, this);
         txtName.Text = "";
     }

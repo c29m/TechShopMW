@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="TechShopDBModel.ProductType" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="TechShopDBModel.FK_Cart_Products" ManuallyRouted="false" />
         <AssociationConnector Association="TechShopDBModel.FK_Products_ProductTypes" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TechShopDBModel.UserInformation" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
