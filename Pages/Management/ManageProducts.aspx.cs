@@ -36,7 +36,10 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
         //Fill the textboxes and dropdown lists
         txtName.Text = product.Name;
         txtPrice.Text = product.Price.ToString();
+
+        //txtDescription.Text = Sidekick.SeparateLongWords(product.Description);
         txtDescription.Text = product.Description;
+
         ddType.SelectedValue = product.TypeId.ToString();
         ddImage.SelectedValue = product.Image;
     }
@@ -74,7 +77,7 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
         product.Price = int.Parse(txtPrice.Text);
         product.TypeId = int.Parse(ddType.SelectedValue);
         product.Image = ddImage.SelectedValue;
-        product.Description = txtDescription.Text;
+        product.Description = Sidekick.SeparateLongWords(txtDescription.Text);
         if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrWhiteSpace(txtDescription.Text)) product.Description = "No description";
         return product;
     }

@@ -7,26 +7,26 @@
     <br />
     <br />
     <asp:GridView ID="grdProducts" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sdsProducts" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowEditing="grdProducts_RowEditing">
-        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+        <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-            <asp:BoundField DataField="TypeId" HeaderText="TypeId" SortExpression="TypeId" />
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:BoundField DataField="TypeId" HeaderText="TypeId" SortExpression="TypeId" ItemStyle-Wrap="True"/>
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" ItemStyle-Wrap="True"/>
             <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
-            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
-            <asp:BoundField DataField="Image" HeaderText="Image" SortExpression="Image" />
+            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" ItemStyle-Wrap="True"/>
+            <asp:BoundField DataField="Image" HeaderText="Image" SortExpression="Image" ItemStyle-Wrap="True"/>
         </Columns>
-        <EditRowStyle BackColor="#999999" />
-        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#E9E7E2" />
-        <SortedAscendingHeaderStyle BackColor="#506C8C" />
-        <SortedDescendingCellStyle BackColor="#FFFDF8" />
-        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+        <EditRowStyle BackColor="#7C6F57" />
+        <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#E3EAEB" />
+        <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#F8FAFA" />
+        <SortedAscendingHeaderStyle BackColor="#246B61" />
+        <SortedDescendingCellStyle BackColor="#D4DFE1" />
+        <SortedDescendingHeaderStyle BackColor="#15524A" />
     </asp:GridView>
     <asp:SqlDataSource ID="sdsProducts" runat="server" ConnectionString="<%$ ConnectionStrings:TechShopDBConnectionString %>" DeleteCommand="DELETE FROM [Products] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Products] ([TypeId], [Name], [Price], [Description], [Image]) VALUES (@TypeId, @Name, @Price, @Description, @Image)" SelectCommand="SELECT * FROM [Products]" UpdateCommand="UPDATE [Products] SET [TypeId] = @TypeId, [Name] = @Name, [Price] = @Price, [Description] = @Description, [Image] = @Image WHERE [Id] = @Id">
         <DeleteParameters>

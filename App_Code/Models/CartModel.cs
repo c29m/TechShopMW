@@ -67,13 +67,71 @@ public class CartModel
         {
             using (TechShopDBEntities db = new TechShopDBEntities())
             {
-                var item = (from x in db.Carts where x.ProductId == productid && x.ClientId == clientid select x).ToList();
+                var item = (from x in db.Carts
+                            where x.ProductId == productid
+                            && x.ClientId == clientid
+                            && x.IsInCart == true
+                            select x).ToList();
+                
                 return item.FirstOrDefault();
             }
         }
         catch (Exception)
         {
             return null;
+        }
+    }
+
+
+    public List<Cart> GetOrdersInCart(string userId)
+    {
+        TechShopDBEntities db = new TechShopDBEntities();
+        List<Cart> orders = (from x in db.Carts
+                             where x.ClientId == userId
+                             && x.IsInCart
+                             orderby x.DatePurchased
+                             select x).ToList();
+        return orders;
+    }
+    
+    public int GetAmountOfOrders(string userId)
+    {
+        try
+        {
+            TechShopDBEntities db = new TechShopDBEntities();
+            int amount = (from x in db.Carts
+                          where x.ClientId == userId
+                          && x.IsInCart
+                          select x.Amount).Sum();
+            return amount;
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
+    public void UpdateQuantity(int id, int quantity)
+    {
+        TechShopDBEntities db = new TechShopDBEntities();
+        Cart cart = db.Carts.Find(id);
+        cart.Amount = quantity;
+        db.SaveChanges();
+    }
+
+    public void MarkOrdersAsPaid(List<Cart> carts)
+    {
+        TechShopDBEntities db = new TechShopDBEntities();
+
+        if(carts!=null)
+        {
+            foreach(Cart cart in carts)
+            {
+                Cart oldCart = db.Carts.Find(cart.Id);
+                oldCart.DatePurchased = DateTime.Now;
+                oldCart.IsInCart = false;
+            }
+            db.SaveChanges();
         }
     }
 }

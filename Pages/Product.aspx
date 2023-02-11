@@ -1,11 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Product.aspx.cs" Inherits="Pages_Product" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 107px;
+        }
+        .Meh {
+            display: table;
+            width: 100%;
+            float: right;
+            position: relative;
+            overflow: hidden;
+            display: table-row;
+            height: 100%;
+            background-color: #f5f5f5;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table>
         <tr>
-            <td rowspan="4">
+            <td rowspan="4" class="auto-style1">
                 <asp:Image ID="imgProduct" runat="server" CssClass="detailsImage" />
             </td>
             <td>
@@ -14,13 +29,17 @@
                 <hr />
             </td>
         </tr>
+
         <tr>
-            <td>
-                <asp:Label ID="lblDescription" runat="server" CssClass="detailsDescription"></asp:Label>
+            <td >
+                <asp:Label ID="lblDescription" runat="server" CssClass="detailsDescription" ></asp:Label>
             </td>
+        </tr>
+
+        <tr>
             <td >
                 <asp:Label ID="lblPrice" runat="server" CssClass="detailsPrice"></asp:Label><br />
-                Quantity:<asp:DropDownList ID="ddlAmount" runat="server"></asp:DropDownList>
+                <asp:Label ID="lblQuantity" runat="server" >Quantity:</asp:Label><br /><asp:DropDownList ID="ddlAmount" runat="server" CssClass="inputs"></asp:DropDownList>
                 <br />
                 <br />
                 <asp:Button ID="btnAdd" runat="server" CssClass="button30" OnClick="btnAdd_Click" Text="Add Product" />
@@ -29,6 +48,7 @@
                 <asp:Label ID="lblResult" runat="server"></asp:Label>
             </td>
         </tr>
+
         <tr>
             <td>Product ID:
                 <br />
