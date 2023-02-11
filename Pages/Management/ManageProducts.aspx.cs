@@ -6,12 +6,39 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 public partial class Pages_ManageProducts : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack) GetImages();
+        if(!IsPostBack)
+        {
+            GetImages();
+
+            //Check if url contains id parameter
+            if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+            {
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                FillPage(id);
+                lblAddOrEdit.Text = "Edit Product";
+            }
+            else lblAddOrEdit.Text = "Add Product";
+        }
+    }
+
+    void FillPage(int id)
+    {
+        //Get selected product from db
+        ProductModel productModel = new ProductModel();
+        Product product = productModel.GetProduct(id);
+
+        //Fill the textboxes and dropdown lists
+        txtName.Text = product.Name;
+        txtPrice.Text = product.Price.ToString();
+        txtDescription.Text = product.Description;
+        ddType.SelectedValue = product.TypeId.ToString();
+        ddImage.SelectedValue = product.Image;
     }
 
     void GetImages()
@@ -46,8 +73,9 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
         product.Name = txtName.Text;
         product.Price = int.Parse(txtPrice.Text);
         product.TypeId = int.Parse(ddType.SelectedValue);
-        product.Description = txtDescription.Text;
         product.Image = ddImage.SelectedValue;
+        product.Description = txtDescription.Text;
+        if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrWhiteSpace(txtDescription.Text)) product.Description = "No description";
         return product;
     }
 
@@ -55,31 +83,37 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
     {
         if (IsValid)
         {
-            if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrWhiteSpace(txtDescription.Text)) txtDescription.Text = "No description";
-
             ProductModel model = new ProductModel();
             Product p = createProduct();
-            //lblResult.Text = model.InsertProduct(p);
-            lblResult.Text = p.Name;
+
+            //Check if url contains id parameter
+            if (string.IsNullOrEmpty(Request.QueryString["id"]))
+            {
+                lblResult.Text = model.InsertProduct(p);
+                //lblResult.Text = p.Name;
+                reset();
+            }
+            else
+            {
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                lblResult.Text = model.UpdateProduct(id, p);
+            }
         }
         //else lblResult.Text = "Invalid data.";
     }
 
     protected void BtnReset_Click(object sender, EventArgs e)
     {
+        reset();
+        //Response.Redirect(Request.RawUrl);
+    }
+
+    void reset()
+    {
         txtName.Text = null;
         txtDescription.Text = null;
         txtPrice.Text = null;
         ddType.SelectedIndex = 0;
         ddImage.SelectedIndex = 0;
-        Response.Redirect(Request.RawUrl);
-    }
-
-    protected void CustomValidatorpPrice_ServerValidate(object source, ServerValidateEventArgs args)
-    {
-        int n;
-        bool isNumber = int.TryParse(args.Value, out n);
-        if (isNumber && n > 0) args.IsValid = true;
-        else args.IsValid = false;
     }
 }

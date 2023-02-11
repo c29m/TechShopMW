@@ -59,4 +59,21 @@ public class CartModel
             return $"Error: {ex}";
         }
     }
+
+
+    public Cart FindItemInClientCart(int productid, string clientid)
+    {
+        try
+        {
+            using (TechShopDBEntities db = new TechShopDBEntities())
+            {
+                var item = (from x in db.Carts where x.ProductId == productid && x.ClientId == clientid select x).ToList();
+                return item.FirstOrDefault();
+            }
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
 }

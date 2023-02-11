@@ -7,11 +7,11 @@
     <p>
         Name:</p>
     <p>
-        <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtName" runat="server" CssClass="inputs"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidatorName" runat="server" ControlToValidate="txtName" ErrorMessage="*Enter a product type" ForeColor="Red"></asp:RequiredFieldValidator>
     </p>
     <p>
-        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
+        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button30" />
     </p>
     <p>
         <asp:Label ID="lblResult" runat="server"></asp:Label>

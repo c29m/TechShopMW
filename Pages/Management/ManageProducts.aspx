@@ -1,17 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ManageProducts.aspx.cs" Inherits="Pages_ManageProducts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <style type="text/css">
-        .auto-style1 {
-            margin-left: 200px;
-        }
-    </style>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+        <h2>
+            <asp:Label ID="lblAddOrEdit" runat="server" Text="label add or edit"></asp:Label>
+        </h2>
+    <p>
+        &nbsp;</p>
     <p>
     Name:</p>
 <p>
-    <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtName" runat="server" CssClass="inputs"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtName" ErrorMessage="*Product name required" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
 </p>
 <p>
@@ -24,8 +25,7 @@
 <p>
     Price:</p>
 <p>
-    <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
-    <asp:CustomValidator ID="CustomValidatorpPrice" runat="server" ControlToValidate="txtPrice" Display="Dynamic" ErrorMessage="*Price must be a positive integer !" ForeColor="Red" OnServerValidate="CustomValidatorpPrice_ServerValidate" SetFocusOnError="True"></asp:CustomValidator>
+    <asp:TextBox ID="txtPrice" runat="server" TextMode="Number" CssClass="inputs"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidatorPrice" runat="server" ControlToValidate="txtPrice" Display="Dynamic" ErrorMessage="*Product price required" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
 </p>
 <p>
@@ -37,11 +37,11 @@
 <p>
     Description:</p>
 <p>
-    <asp:TextBox ID="txtDescription" runat="server" Height="113px" TextMode="MultiLine" Width="305px"></asp:TextBox>
+    <asp:TextBox ID="txtDescription" runat="server" Height="113px" TextMode="MultiLine" Width="305px" CssClass="inputs"></asp:TextBox>
 </p>
 <p>
-    <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
-    <asp:Button ID="BtnReset" runat="server" OnClick="BtnReset_Click" Text="Reset" CssClass="auto-style1" />
+    <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" CssClass="button30" />
+    <asp:Button ID="BtnReset" runat="server" OnClick="BtnReset_Click" Text="Reset" CssClass="button30" />
 </p>
 <p>
     <asp:Label ID="lblResult" runat="server"></asp:Label>
