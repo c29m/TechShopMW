@@ -29,11 +29,20 @@ public partial class Pages_Product : System.Web.UI.Page
             imgProduct.ImageUrl = $"~/Images/Products/{product.Image}";
             lblItemNumber.Text = product.Id.ToString();
 
-            //Fill amount list with numbers 1-20
-            int[] amount = Enumerable.Range(1, 20).ToArray();
+            //Fill amount list with numbers 1-100
+            int[] amount = Enumerable.Range(1, 100).ToArray();
             ddlAmount.DataSource = amount;
             ddlAmount.AppendDataBoundItems = true;
             ddlAmount.DataBind();
+
+            //If manager logs in then hide and disable add button and dropdown list.
+            string clientId = Context.User.Identity.GetUserId();
+            if (clientId=="manager")
+            {
+                btnAdd.Visible = btnAdd.Enabled = false;
+                ddlAmount.Visible = ddlAmount.Enabled = false;
+                lblQuantity.Visible = false;
+            }
         }
     }
 
@@ -78,5 +87,6 @@ public partial class Pages_Product : System.Web.UI.Page
                 lblResult.Text = "Please log in to order items.";
             }
         }
+        ddlAmount.SelectedIndex = 0;
     }
 }

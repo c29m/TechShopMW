@@ -26,7 +26,7 @@
                         
                         <li style="float: right">
                             <asp:HyperLink ID="lnkRegister" runat="server" NavigateUrl="~/Pages/Account/Register.aspx">Register</asp:HyperLink>
-                            <asp:Literal ID="litStatus" runat="server" />
+                            <asp:HyperLink ID="litStatus" runat="server" NavigateUrl="~/Pages/ShoppingCart.aspx" />
                         </li>
                         <li style="float: right">
                             <asp:HyperLink ID="lnkLogIn" runat="server" NavigateUrl="~/Pages/Account/Login.aspx">Log In</asp:HyperLink>

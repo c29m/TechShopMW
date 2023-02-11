@@ -14,4 +14,13 @@ public static class Sidekick
     {
         page.ClientScript.RegisterStartupScript(page.GetType(), "myalert", $"alert('{message}');", true);
     }
+
+    public static string SeparateLongWords(string myString)
+    {
+        //string myString = "mondayfridaysaturday";
+        string result = string.Empty;
+        for (int i = 0; i < myString.Length; i++)
+            result += (i % 20 == 0 && i != 0) ? (myString[i].ToString() + " ") : myString[i].ToString();
+        return result;
+    }
 }
