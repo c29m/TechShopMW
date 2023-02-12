@@ -3,45 +3,52 @@
 <!DOCTYPE html>
 
 <html>
-<head runat="server">
-    <title>Tech Land</title>
-    <link rel="stylesheet" href="~/Styles/StyleSheet.css?Version=3" type="text/css" />
-    <asp:ContentPlaceHolder id="head" runat="server">
-    </asp:ContentPlaceHolder>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-
-            <div id="wrapper">
-                <div id="banner">
-                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/BannerCar.jpg" Width="100%" />
+    <head runat="server">
+        <title>Tech Land</title>
+        <link rel="stylesheet" href="~/Styles/StyleSheet.css?Version=3" type="text/css" />
+        <asp:ContentPlaceHolder id="head" runat="server">
+        </asp:ContentPlaceHolder>
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <div>
+    
+                <div id="wrapper">
+                    <div id="banner">
+                        <asp:Image CssClass="banner" ID="Image1" runat="server" ImageUrl="~/Images/psbs2.png" Width="100%" />
+                    </div>
+                    <div id="navigation">
+                        <ul id="nav">
+                            <li><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Index.aspx">Web Shop</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Pages/Search.aspx">Search</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Pages/About.aspx">About Us</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Pages/Management/Management.aspx">Management</asp:HyperLink></li>
+                            
+                            <li style="float: right">
+                                <asp:HyperLink ID="lnkRegister" runat="server" NavigateUrl="~/Pages/Account/Register.aspx">Register</asp:HyperLink>
+                                <asp:HyperLink ID="litStatus" runat="server" NavigateUrl="~/Pages/ShoppingCart.aspx" />
+                            </li>
+                            <li style="float: right">
+                                <asp:HyperLink ID="lnkLogIn" runat="server" NavigateUrl="~/Pages/Account/Login.aspx">Log In</asp:HyperLink>
+                                <asp:LinkButton ID="lnkLogOut" runat="server" Text="Log out" OnClick="lnkLogOut_Click" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="content">
+                        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    
+                        </asp:ContentPlaceHolder>
+                    </div>
                 </div>
-                <div id="navigation">
-                    <ul id="nav">
-                        <li><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Index.aspx">Web Shop</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Pages/About.aspx">About Us</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink3" runat="server">Reports</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Pages/Management/Management.aspx">Management</asp:HyperLink></li>
-                        
-                        <li style="float: right">
-                            <asp:HyperLink ID="lnkRegister" runat="server" NavigateUrl="~/Pages/Account/Register.aspx">Register</asp:HyperLink>
-                            <asp:HyperLink ID="litStatus" runat="server" NavigateUrl="~/Pages/ShoppingCart.aspx" />
-                        </li>
-                        <li style="float: right">
-                            <asp:HyperLink ID="lnkLogIn" runat="server" NavigateUrl="~/Pages/Account/Login.aspx">Log In</asp:HyperLink>
-                            <asp:LinkButton ID="lnkLogOut" runat="server" Text="Log out" OnClick="lnkLogOut_Click" />
-                        </li>
-                    </ul>
-                </div>
-                <div id="content">
-                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-
-                    </asp:ContentPlaceHolder>
-                </div>
+    
             </div>
+        </form>
+    </body>
+    
+    <footer>
+        <p><b>PC Building For Life</b>
+        <br />
+        <a href="https://github.com/mahdiiadib" target="_blank" rel="noopener noreferrer">github.com/mahdiiadib</a></p>
+    </footer>
 
-        </div>
-    </form>
-</body>
 </html>
