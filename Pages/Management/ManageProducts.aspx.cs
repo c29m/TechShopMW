@@ -14,7 +14,7 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
     {
         if(!IsPostBack)
         {
-            GetImages();
+            //GetImages();
 
             //Check if url contains id parameter
             if (!string.IsNullOrEmpty(Request.QueryString["id"]))
@@ -36,14 +36,16 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
         //Fill the textboxes and dropdown lists
         txtName.Text = product.Name;
         txtPrice.Text = product.Price.ToString();
-
-        //txtDescription.Text = Sidekick.SeparateLongWords(product.Description);
+        ddType.SelectedValue = product.TypeId.ToString();
         txtDescription.Text = product.Description;
 
-        ddType.SelectedValue = product.TypeId.ToString();
-        ddImage.SelectedValue = product.Image;
+        lblImage.Text = product.Image;
+
+        RequiredFieldValidatorImage.Enabled = false;
     }
 
+
+    /*
     void GetImages()
     {
         try
@@ -60,15 +62,17 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
             }
 
             //set the imagelist as dropdown list's data source and refresh
-            ddImage.DataSource = imageList;
-            ddImage.AppendDataBoundItems = true;
-            ddImage.DataBind();
+            //ddImage.DataSource = imageList;
+            //ddImage.AppendDataBoundItems = true;
+            //ddImage.DataBind();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             lblResult.Text = ex.Message;
         }
     }
+    */
+
 
     Product createProduct()
     {
@@ -76,9 +80,22 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
         product.Name = txtName.Text;
         product.Price = int.Parse(txtPrice.Text);
         product.TypeId = int.Parse(ddType.SelectedValue);
-        product.Image = ddImage.SelectedValue;
-        product.Description = Sidekick.SeparateLongWords(txtDescription.Text);
+        
+        if (string.IsNullOrEmpty(Request.QueryString["id"])) product.Description = Sidekick.SeparateLongWords(txtDescription.Text);
+        else product.Description = txtDescription.Text;
+        
         if (string.IsNullOrEmpty(txtDescription.Text) || string.IsNullOrWhiteSpace(txtDescription.Text)) product.Description = "No description";
+
+        if (FileUpload1.HasFile)
+        {
+            FileUpload1.SaveAs(Server.MapPath($"~/Images/Products/{FileUpload1.FileName}"));
+            product.Image = lblImage.Text = FileUpload1.FileName;
+        }
+        else
+        {
+            product.Image = lblImage.Text;
+        }
+
         return product;
     }
 
@@ -117,6 +134,8 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
         txtDescription.Text = null;
         txtPrice.Text = null;
         ddType.SelectedIndex = 0;
-        ddImage.SelectedIndex = 0;
+        FileUpload1.Dispose();
+        lblImage.Text = "No Image";
+        RequiredFieldValidatorImage.Enabled = true;
     }
 }
