@@ -17,6 +17,7 @@ public partial class _Default : System.Web.UI.Page
         //Get all products from db
         ProductModel productModel = new ProductModel();
         List<Product> products = productModel.GetAllProducts();
+        products = Sidekick.ShuffleList(products);
 
         //Make sure product exists
         if (products != null)
