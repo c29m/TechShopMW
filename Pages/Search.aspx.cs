@@ -30,7 +30,11 @@ public partial class Pages_Search : System.Web.UI.Page
 
         if (string.IsNullOrEmpty(txtSearch.Text) || string.IsNullOrWhiteSpace(txtSearch.Text))
         {
-            if (productType == 1) products = productModel.GetAllProducts();
+            if (productType == 1)
+            {
+                products = productModel.GetAllProducts();
+                products = Sidekick.ShuffleList(products);
+            }
             else products = productModel.GetProductsByType(productType);
         }
         else

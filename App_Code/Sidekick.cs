@@ -23,4 +23,18 @@ public static class Sidekick
             result += (i % 20 == 0 && i != 0) ? (myString[i].ToString() + " ") : myString[i].ToString();
         return result;
     }
+
+    public static List<T> ShuffleList<T>(List<T> list)
+    {
+        Random random = new Random();
+        List<T> newShuffledList = new List<T>();
+        int listcCount = list.Count;
+        for (int i = 0; i < listcCount; i++)
+        {
+            int randomElementInList = random.Next(0, list.Count);
+            newShuffledList.Add(list[randomElementInList]);
+            list.Remove(list[randomElementInList]);
+        }
+        return newShuffledList;
+    }
 }

@@ -4,7 +4,8 @@
 
 <html>
     <head runat="server">
-        <title>Tech Land</title>
+        <title>Tech Land MW</title>
+        <link rel="icon" type="images/x-icon" href="Images/titleicon2.png" />
         <link rel="stylesheet" href="~/Styles/StyleSheet.css?Version=3" type="text/css" />
         <asp:ContentPlaceHolder id="head" runat="server">
         </asp:ContentPlaceHolder>
@@ -15,7 +16,7 @@
     
                 <div id="wrapper">
                     <div id="banner">
-                        <asp:Image CssClass="banner" ID="Image1" runat="server" ImageUrl="~/Images/psbs2.png" Width="100%" />
+                        <asp:Image CssClass="banner" ID="Image1" runat="server" ImageUrl="~/Images/pcbs2.png" Width="100%" />
                     </div>
                     <div id="navigation">
                         <ul id="nav">
