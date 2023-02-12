@@ -1,9 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="Pages_About" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script>
+        //alert("hello");
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <b>
+    <p style="text-align:center;"><b>
         Building a PC can be quite a chore,<br />
         But the joy of customization is worth so much more.
         <br /><br />
@@ -30,10 +34,9 @@
         <br /><br />
         So why settle for a computer off the shelf,<br />
         When building your own can be so rewarding and fulfilling, it's worth it by itself.
-        <br /><br />
+        <br /><br /><br />
     </b>
     LAPTOP-C3RVLDBD <a href="https://chat.openai.com/chat" target="_blank" rel="noopener noreferrer">@ChatGPT</a></p>
-    <br />
 </asp:Content>
 
 <%--LAPTOP-C3RVLDBD--%>
