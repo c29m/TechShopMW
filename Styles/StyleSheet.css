@@ -5,6 +5,14 @@
     background-color: lavender;
 }
 
+footer {
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    background-color: lavender;
+    color: #574c3f;
+}
+
 #wrapper {
     width: 1400px;
     margin: auto;
@@ -17,7 +25,7 @@
     overflow: hidden;
 }
 
-#banner {
+.banner {
 
 }
 
@@ -54,6 +62,7 @@
 
     #nav a:hover {
         background-color: white;
+        transform: translateY(-2px);
     }
 
 #content {
@@ -61,23 +70,9 @@
     min-height: 400px;
 }
 
+
+
 /*Generic Controls*/
-.button {
-    background: linear-gradient(to bottom, darkgreen, green);
-    padding: 10px;
-    margin: 10px;
-    color: white;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    border: 0;
-    clear: both;
-}
-
-
-
-
-/*<button class="button-30" role="button" > Button 30</button >*/
 .button30 {
     align-items: center;
     appearance: none;
@@ -131,6 +126,43 @@
 
 
 
+.inputs {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: #EAEAEA;
+    background: -moz-linear-gradient(top, #FFF, #EAEAEA);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #FFF), color-stop(1.0, #EAEAEA));
+    border: 1px solid #CACACA;
+    color: #444;
+    margin: 0 0 25px;
+    padding: 5px 9px;
+    width: 260px;
+}
+
+    .inputs:focus {
+        background: #FFF;
+        -webkit-box-shadow: 0 0 25px #CCC;
+        -moz-box-shadow: 0 0 25px #ccc;
+        box-shadow: 0 0 25px #CCC;
+    }
+    .inputs:hover {
+        background: #FFF;
+        -webkit-box-shadow: 0 0 25px #CCC;
+        -moz-box-shadow: 0 0 25px #ccc;
+        box-shadow: 0 0 25px #CCC;
+    }
+
+
+
+
+/*Search */
+#ContentPlaceHolder1_pnlSearchProducts div {
+    float: left;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+}
+
 
 /*Webshop */
 #ContentPlaceHolder1_pnlProducts div {
@@ -160,6 +192,7 @@
     border-radius: 50px;
 }
 
+
 /*Detail page*/
 .detailsImage {
     height: 465px;
@@ -177,27 +210,6 @@
     font-size: 24px;
     width: 2000px;
 }
-
-
-.inputs {
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    background-color: #EAEAEA;
-    background: -moz-linear-gradient(top, #FFF, #EAEAEA);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #FFF), color-stop(1.0, #EAEAEA));
-    border: 1px solid #CACACA;
-    color: #444;
-    margin: 0 0 25px;
-    padding: 5px 9px;
-    width: 260px;
-}
-
-    .inputs:focus {
-        background: #FFF;
-        -webkit-box-shadow: 0 0 25px #CCC;
-        -moz-box-shadow: 0 0 25px #ccc;
-        box-shadow: 0 0 25px #CCC;
-    }
 
 
 /*Shopping Cart Page */

@@ -20,12 +20,12 @@
 <p>
     <asp:DropDownList ID="ddType" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id">
     </asp:DropDownList>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TechShopDBConnectionString %>" SelectCommand="SELECT * FROM [ProductTypes] ORDER BY [Name]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TechShopDBConnectionString %>" SelectCommand="SELECT Id, Name FROM ProductTypes WHERE (Name &lt;&gt; 'any')"></asp:SqlDataSource>
 </p>
 <p>
     Price:</p>
 <p>
-    <asp:TextBox ID="txtPrice" runat="server" TextMode="Number" CssClass="inputs"></asp:TextBox>
+    <asp:TextBox ID="txtPrice" runat="server" TextMode="Number" CssClass="inputs" min="0"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidatorPrice" runat="server" ControlToValidate="txtPrice" Display="Dynamic" ErrorMessage="*Product price required" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
 </p>
 <p>

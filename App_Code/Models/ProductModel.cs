@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -104,6 +105,35 @@ public class ProductModel
                 List<Product> products = (from x in db.Products where x.TypeId == typeid select x).ToList();
                 return products;
             }
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+    
+    public List<Product> GetProductsByName(string name)
+    {
+        try
+        {
+            using (TechShopDBEntities db = new TechShopDBEntities())
+            {
+                List<Product> products = (from x in db.Products where x.Name.Contains(name) select x).ToList();
+                return products;
+            }
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+    
+    public List<Product> GetProductsByNameAndType(string name, int typeid)
+    {
+        try
+        {
+            using (TechShopDBEntities db = new TechShopDBEntities())
+                return (from x in db.Products where x.Name.Contains(name) && x.TypeId == typeid select x).ToList();
         }
         catch (Exception)
         {
