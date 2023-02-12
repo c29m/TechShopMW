@@ -29,8 +29,8 @@ public partial class Pages_Product : System.Web.UI.Page
             imgProduct.ImageUrl = $"~/Images/Products/{product.Image}";
             lblItemNumber.Text = product.Id.ToString();
 
-            //Fill amount list with numbers 1-100
-            int[] amount = Enumerable.Range(1, 100).ToArray();
+            //Fill amount list with numbers 1-200
+            int[] amount = Enumerable.Range(1, 200).ToArray();
             ddlAmount.DataSource = amount;
             ddlAmount.AppendDataBoundItems = true;
             ddlAmount.DataBind();

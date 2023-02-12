@@ -99,8 +99,8 @@ public partial class Pages_ShoppingCart : System.Web.UI.Page
 
             lnkDelete.Click += Delete_Item;
 
-            //Fill amount list with numbers 1-100
-            int[] amount = Enumerable.Range(1, 100).ToArray();
+            //Fill amount list with numbers 1-200
+            int[] amount = Enumerable.Range(1, 200).ToArray();
             DropDownList ddlAmount = new DropDownList
             {
                 DataSource = amount,
