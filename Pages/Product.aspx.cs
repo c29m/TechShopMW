@@ -43,6 +43,7 @@ public partial class Pages_Product : System.Web.UI.Page
                 btnAdd.Visible = btnAdd.Enabled = false;
                 ddlAmount.Visible = ddlAmount.Enabled = false;
                 lblQuantity.Visible = false;
+                lnkBtnEdit.Visible = lnkBtnEdit.Enabled = true;
             }
         }
     }
@@ -91,5 +92,18 @@ public partial class Pages_Product : System.Web.UI.Page
             }
         }
         ddlAmount.SelectedIndex = 0;
+    }
+
+    protected void lnkBtnEdit_Click(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrWhiteSpace(Request.QueryString["id"]))
+        {
+            string clientId = Context.User.Identity.GetUserId();
+            if (clientId == "manager")
+            {
+                int pid = Convert.ToInt32(Request.QueryString["id"]);
+                Response.Redirect($"~/Pages/Management/ManageProducts.aspx?id={pid}");
+            }
+        }
     }
 }

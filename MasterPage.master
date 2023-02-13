@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="~/Styles/StyleSheet.css?Version=3" type="text/css" />
         <asp:ContentPlaceHolder id="head" runat="server">
         </asp:ContentPlaceHolder>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+        </style>
     </head>
     <body>
         <form id="form1" runat="server">
