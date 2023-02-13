@@ -140,4 +140,56 @@ public class ProductModel
             return null;
         }
     }
+
+    public List<Product> GetProductsByPrice(int min, int max)
+    {
+        try
+        {
+            using (TechShopDBEntities db = new TechShopDBEntities())
+                return (from x in db.Products where x.Price >= min && x.Price <= max select x).ToList();
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    public List<Product> GetProductsByNameAndPrice(string name, int min, int max)
+    {
+        try
+        {
+            using (TechShopDBEntities db = new TechShopDBEntities())
+                return (from x in db.Products where x.Name.Contains(name) && x.Price >= min && x.Price <= max select x).ToList();
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    public List<Product> GetProductsByTypeAndPrice(int typeid, int min, int max)
+    {
+        try
+        {
+            using (TechShopDBEntities db = new TechShopDBEntities())
+                return (from x in db.Products where x.TypeId == typeid && x.Price >= min && x.Price <= max select x).ToList();
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    public List<Product> GetProductsByName_Type_Price(string name, int typeid, int min, int max)
+    {
+        try
+        {
+            using (TechShopDBEntities db = new TechShopDBEntities())
+                return (from x in db.Products where x.Name.Contains(name) && x.TypeId == typeid && x.Price >= min && x.Price <= max select x).ToList();
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
 }
