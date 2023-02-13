@@ -149,5 +149,6 @@ public partial class Pages_Search : System.Web.UI.Page
         txtPriceRngMin.Text = "";
         txtPriceRngMax.Text = "";
         lblPriceRngStatus.Text = "";
+        chkPriceSort.Checked = false;
     }
 }
