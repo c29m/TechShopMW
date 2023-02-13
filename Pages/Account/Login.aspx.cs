@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Owin.Security;
+using System.Drawing;
 
 public partial class Pages_Account_Login : System.Web.UI.Page
 {
@@ -43,7 +44,7 @@ public partial class Pages_Account_Login : System.Web.UI.Page
         }
         else
         {
-            litStatus.Text = "Invalid username or password";
+            lblStatus.Text = "*Invalid username or password";
         }
     }
 }
