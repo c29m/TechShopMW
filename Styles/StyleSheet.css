@@ -63,6 +63,7 @@ footer {
     #nav a:hover {
         background-color: white;
         transform: translateY(-2px);
+        font-weight: bold;
     }
 
 #content {
