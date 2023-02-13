@@ -30,7 +30,8 @@ public partial class Pages_Search : System.Web.UI.Page
         int mn, mx;
         List<Product> products;
         List<string> searchKw = txtSearch.Text.Split(' ').ToList();
-        HashSet<Product> productSet = new HashSet<Product>();
+        //HashSet<Product> productSet = new HashSet<Product>();
+        Dictionary<int, Product> productMap = new Dictionary<int, Product>();
 
         try
         {
@@ -88,11 +89,13 @@ public partial class Pages_Search : System.Web.UI.Page
                         products = productModel.GetProductsByNameAndPrice(x, mn, mx);
                         foreach (Product p in products)
                         {
-                            productSet.Add(p);
+                            //productSet.Add(p);
+                            productMap[p.Id] = p;
                         }
                     }
                     //products = productModel.GetProductsByNameAndPrice(txtSearch.Text, mn, mx);//////////////
-                    products = productSet.ToList();
+                    //products = productSet.ToList();
+                    products = productMap.Values.ToList();
                 }
                 else//No Price
                 {
@@ -101,11 +104,13 @@ public partial class Pages_Search : System.Web.UI.Page
                         products = productModel.GetProductsByName(x);
                         foreach(Product p in products)
                         {
-                            productSet.Add(p);
+                            //productSet.Add(p);
+                            productMap[p.Id] = p;
                         }
                     }
                     //products = productModel.GetProductsByName(txtSearch.Text);//////////////
-                    products=productSet.ToList();
+                    //products=productSet.ToList();
+                    products = productMap.Values.ToList();
                 }
             }
             else//Type
@@ -121,11 +126,13 @@ public partial class Pages_Search : System.Web.UI.Page
                         products = productModel.GetProductsByNameAndType(x, productType);
                         foreach (Product p in products)
                         {
-                            productSet.Add(p);
+                            //productSet.Add(p);
+                            productMap[p.Id] = p;
                         }
                     }
                     //products = productModel.GetProductsByNameAndType(txtSearch.Text, productType);//////////////
-                    products = productSet.ToList();
+                    //products = productSet.ToList();
+                    products = productMap.Values.ToList();
                 }
             }
         }
