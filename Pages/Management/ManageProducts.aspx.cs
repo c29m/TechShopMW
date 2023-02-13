@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -118,8 +119,13 @@ public partial class Pages_ManageProducts : System.Web.UI.Page
                 int id = Convert.ToInt32(Request.QueryString["id"]);
                 lblResult.Text = model.UpdateProduct(id, p);
             }
+            lblResult.ForeColor = Color.Green;
         }
-        //else lblResult.Text = "Invalid data.";
+        //else
+        //{
+        //    lblResult.Text = "Invalid data.";
+        //    lblResult.ForeColor = Color.Red;
+        //}
     }
 
     protected void BtnReset_Click(object sender, EventArgs e)

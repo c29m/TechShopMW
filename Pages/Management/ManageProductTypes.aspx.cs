@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -19,6 +20,7 @@ public partial class Pages_ManageProductTypes : System.Web.UI.Page
         ProductType pt = createProductType();
         pt.Name = txtName.Text;
         lblResult.Text = model.InsertProductType(pt);
+        lblResult.ForeColor = Color.Green;
         //lblResult.Text = txtName.Text;
         //Sidekick.Alert(txtName.Text, this);
         txtName.Text = "";

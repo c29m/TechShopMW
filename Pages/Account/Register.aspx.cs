@@ -26,7 +26,7 @@ public partial class Pages_Account_Register : System.Web.UI.Page
 
         if (txtUserName.Text == "manager")
         {
-            litStatus.Text = "This user name cannot be used.";
+            lblStatus.Text = "This user name cannot be used.";
             return;
         }
 
@@ -34,7 +34,7 @@ public partial class Pages_Account_Register : System.Web.UI.Page
         IdentityUser user = new IdentityUser();
         user.UserName = txtUserName.Text;
 
-        if(txtPassword.Text.Length < 6) litStatus.Text = "Passwords must be atleast 6 characters long.";
+        if(txtPassword.Text.Length < 6) lblStatus.Text = "*Password must be atleast 6 characters long.";
         else if (txtPassword.Text==txtConfirmPassword.Text)
         {
             try
@@ -70,12 +70,12 @@ public partial class Pages_Account_Register : System.Web.UI.Page
             }
             catch(Exception ex)
             {
-                litStatus.Text = ex.Message;
+                lblStatus.Text = ex.Message;
             }
         }
         else
         {
-            litStatus.Text = "Passwords must match";
+            lblStatus.Text = "*Passwords must match";
         }
     }
 }

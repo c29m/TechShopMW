@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -54,7 +55,7 @@ public partial class Pages_Product : System.Web.UI.Page
 
             if (clientId == "manager")
             {
-                lblResult.Text = "Manager Cannot Buy Items From Manager Account.";
+                lblResult.Text = "*Manager Cannot Buy Items From Manager Account.";
                 return;
             }
 
@@ -81,10 +82,12 @@ public partial class Pages_Product : System.Web.UI.Page
                     lblResult.Text = cartModel.UpdateCart(c.Id, cart);
                 }
                 else lblResult.Text = cartModel.InsertCart(cart);
+                lblResult.ForeColor = Color.Green;
             }
             else
             {
-                lblResult.Text = "Please log in to order items.";
+                lblResult.Text = "*Please log in to order items.";
+                lblResult.ForeColor = Color.Red;
             }
         }
         ddlAmount.SelectedIndex = 0;

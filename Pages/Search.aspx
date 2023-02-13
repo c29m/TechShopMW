@@ -13,8 +13,8 @@
         <asp:TextBox ID="txtPriceRngMin" runat="server" TextMode="Number" min="0" max="600000" placeholder="min" ></asp:TextBox>
         <asp:TextBox ID="txtPriceRngMax" runat="server" TextMode="Number" min="0" max="600000" placeholder="max" ></asp:TextBox>
         <br />
-        <asp:Label ID="lblPriceRngStatus" runat="server"></asp:Label>
-        <br />
+        <asp:Label ID="lblPriceRngStatus" runat="server" ForeColor="Red"></asp:Label>
+        <br /><br />
         <asp:CheckBox ID="chkPriceSort" runat="server" />
         <asp:Label ID="lblPriceSort" runat="server" Text="Sort by Price" Font-Bold="True"></asp:Label>
         <br /><br />
