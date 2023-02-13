@@ -37,4 +37,18 @@ public static class Sidekick
         }
         return newShuffledList;
     }
+
+    
+    private static int CompareProductList(Product x, Product y)
+    {
+        if (x.Price == y.Price) return 0;
+        else if (x.Price < y.Price) return -1;
+        else return 1;
+    }
+
+    public static List<Product> SortProductList(List<Product> list)
+    {
+        list.Sort(CompareProductList);
+        return list;
+    }
 }
