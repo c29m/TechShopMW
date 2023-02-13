@@ -5,7 +5,7 @@
 <html>
     <head runat="server">
         <title>Tech Land MW</title>
-        <link rel="icon" type="images/x-icon" href="Images/titleicon2.png" />
+        <link rel="icon" type="images/x-icon" href="Images/m-logo.png" />
         <link rel="stylesheet" href="~/Styles/StyleSheet.css?Version=3" type="text/css" />
         <asp:ContentPlaceHolder id="head" runat="server">
         </asp:ContentPlaceHolder>
@@ -43,13 +43,18 @@
                 </div>
     
             </div>
-        </form>
     </body>
     
     <footer>
+        <p><b>
+            <asp:ImageButton ID="imgBtnFooter" runat="server" Height="35px" ImageUrl="~/Images/m-logo.png" Width="70px" />
+    </b></p>
         <p><b>PC Building For Life</b>
         <br />
         <a href="https://github.com/mahdiiadib/TechShopMW" target="_blank" rel="noopener noreferrer">github.com/mahdiiadib/TechShopMW</a></p>
     </footer>
+
+    </form>
+    
 
 </html>
