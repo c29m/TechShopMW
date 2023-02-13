@@ -5,16 +5,6 @@
         .auto-style1 {
             width: 107px;
         }
-        .Meh {
-            display: table;
-            width: 100%;
-            float: right;
-            position: relative;
-            overflow: hidden;
-            display: table-row;
-            height: 100%;
-            background-color: #f5f5f5;
-        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -46,6 +36,9 @@
                 <br />
                 <br />
                 <asp:Label ID="lblResult" runat="server"></asp:Label>
+                <br />
+                <br />
+                <asp:LinkButton ID="lnkBtnEdit" runat="server" CssClass="button30" Enabled="False" OnClick="lnkBtnEdit_Click" Visible="False">Edit</asp:LinkButton>
             </td>
         </tr>
 

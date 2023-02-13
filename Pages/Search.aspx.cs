@@ -29,6 +29,8 @@ public partial class Pages_Search : System.Web.UI.Page
         int productType = Convert.ToInt32(ddlSearchType.SelectedItem.Value);
         int mn, mx;
         List<Product> products;
+        List<string> searchKw = txtSearch.Text.Split(' ').ToList();
+        HashSet<Product> productSet = new HashSet<Product>();
 
         try
         {
@@ -81,11 +83,29 @@ public partial class Pages_Search : System.Web.UI.Page
             {
                 if (chkPriceRng.Checked)//Price
                 {
-                    products = productModel.GetProductsByNameAndPrice(txtSearch.Text, mn, mx);
+                    foreach (string x in searchKw)
+                    {
+                        products = productModel.GetProductsByNameAndPrice(x, mn, mx);
+                        foreach (Product p in products)
+                        {
+                            productSet.Add(p);
+                        }
+                    }
+                    //products = productModel.GetProductsByNameAndPrice(txtSearch.Text, mn, mx);//////////////
+                    products = productSet.ToList();
                 }
                 else//No Price
                 {
-                    products = productModel.GetProductsByName(txtSearch.Text);
+                    foreach(string x in searchKw)
+                    {
+                        products = productModel.GetProductsByName(x);
+                        foreach(Product p in products)
+                        {
+                            productSet.Add(p);
+                        }
+                    }
+                    //products = productModel.GetProductsByName(txtSearch.Text);//////////////
+                    products=productSet.ToList();
                 }
             }
             else//Type
@@ -96,7 +116,16 @@ public partial class Pages_Search : System.Web.UI.Page
                 }
                 else//No Price
                 {
-                    products = productModel.GetProductsByNameAndType(txtSearch.Text, productType);
+                    foreach (string x in searchKw)
+                    {
+                        products = productModel.GetProductsByNameAndType(x, productType);
+                        foreach (Product p in products)
+                        {
+                            productSet.Add(p);
+                        }
+                    }
+                    //products = productModel.GetProductsByNameAndType(txtSearch.Text, productType);//////////////
+                    products = productSet.ToList();
                 }
             }
         }
