@@ -29,7 +29,8 @@ public partial class Pages_Search : System.Web.UI.Page
         int productType = Convert.ToInt32(ddlSearchType.SelectedItem.Value);
         int mn, mx;
         List<Product> products;
-        List<string> searchKw = txtSearch.Text.Split(' ').ToList();
+        string searchTxt = Sidekick.RemoveExtraSpaces(txtSearch.Text);
+        List<string> searchKw = searchTxt.Split(' ').ToList();
         //HashSet<Product> productSet = new HashSet<Product>();
         Dictionary<int, Product> productMap = new Dictionary<int, Product>();
 
@@ -93,9 +94,11 @@ public partial class Pages_Search : System.Web.UI.Page
                             productMap[p.Id] = p;
                         }
                     }
-                    //products = productModel.GetProductsByNameAndPrice(txtSearch.Text, mn, mx);//////////////
                     //products = productSet.ToList();
                     products = productMap.Values.ToList();
+                    //products = productModel.GetProductsByNameAndPrice(txtSearch.Text, mn, mx);//////////////
+                    var prod = productModel.GetProductsByNameAndPrice(searchTxt, mn, mx);
+                    if (prod.Count != 0) products = prod;
                 }
                 else//No Price
                 {
@@ -108,9 +111,11 @@ public partial class Pages_Search : System.Web.UI.Page
                             productMap[p.Id] = p;
                         }
                     }
-                    //products = productModel.GetProductsByName(txtSearch.Text);//////////////
                     //products=productSet.ToList();
                     products = productMap.Values.ToList();
+                    //products = productModel.GetProductsByName(txtSearch.Text);//////////////
+                    var prod = productModel.GetProductsByName(searchTxt);
+                    if (prod.Count != 0) products = prod;
                 }
             }
             else//Type
@@ -130,9 +135,11 @@ public partial class Pages_Search : System.Web.UI.Page
                             productMap[p.Id] = p;
                         }
                     }
-                    //products = productModel.GetProductsByNameAndType(txtSearch.Text, productType);//////////////
                     //products = productSet.ToList();
                     products = productMap.Values.ToList();
+                    //products = productModel.GetProductsByNameAndType(txtSearch.Text, productType);//////////////
+                    var prod = productModel.GetProductsByNameAndType(searchTxt, productType);
+                    if (prod.Count != 0) products = prod;
                 }
             }
         }

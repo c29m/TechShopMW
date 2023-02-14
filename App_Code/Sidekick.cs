@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Xml.Linq;
 
-/// <summary>
-/// Summary description for Sidekick
-/// </summary>
+
 public static class Sidekick
 {
     public static void Alert(string message, Page page)
@@ -50,5 +49,11 @@ public static class Sidekick
     {
         list.Sort(CompareProductList);
         return list;
+    }
+
+    public static string RemoveExtraSpaces(string a)
+    {
+        Regex trimmer = new Regex(@"\s\s+");
+        return trimmer.Replace(a, " ").Trim();
     }
 }

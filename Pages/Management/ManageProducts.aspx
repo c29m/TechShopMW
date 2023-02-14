@@ -31,14 +31,15 @@
     <asp:RequiredFieldValidator ID="RequiredFieldValidatorPrice" runat="server" ControlToValidate="txtPrice" Display="Dynamic" ErrorMessage="*Product price required" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
 </p>
 <p>
-    <b>Image:</b></p>
+    <b>Image: </b>
+        <asp:Label ID="lblImage" runat="server" Text="No Image"></asp:Label>
+        </p>
 <p>
     <asp:FileUpload ID="FileUpload1" runat="server" />
     <asp:RequiredFieldValidator ID="RequiredFieldValidatorImage" runat="server" ControlToValidate="FileUpload1" ErrorMessage="*Image Required" ForeColor="Red"></asp:RequiredFieldValidator>
 </p>
         <p>
-        <asp:Label ID="lblImage" runat="server" Text="No Image"></asp:Label>
-        </p>
+            &nbsp;</p>
     <br />
 
 <p>
