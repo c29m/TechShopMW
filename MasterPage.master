@@ -19,7 +19,7 @@
     
                 <div id="wrapper">
                     <div id="banner">
-                        <asp:Image CssClass="banner" ID="Image1" runat="server" ImageUrl="~/Images/pcbs2.png" Width="100%" />
+                        <asp:Image CssClass="banner" ID="Image1" runat="server" ImageUrl="~/Images/pcbs1_b.jpg" Width="100%" />
                     </div>
                     <div id="navigation">
                         <ul id="nav">
